@@ -1,0 +1,6 @@
+<li>
+  <label for="task_<%= task.id %>" data-action="change->tasks#toggleComplete" data-task-url="<%= project_task_url(task.project, task) %>" data-task-id="<%= task.id %>" class="<%= "completed" if task.complete? %>">
+    <input type="checkbox" id="task_<% task.id %>">
+    <%= task.body %>
+  </label>
+</li>

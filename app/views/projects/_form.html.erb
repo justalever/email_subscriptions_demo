@@ -21,6 +21,10 @@
     <%= form.text_area :description, class: "input" %>
   </div>
 
+  <div class="mb-6">
+    <%= collection_check_boxes(:project, :user_ids, User.all, :id, :name) %>
+  </div>
+
   <div class="actions">
     <%= form.submit class: "btn btn-default" %>
   </div>

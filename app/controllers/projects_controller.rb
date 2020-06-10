@@ -5,12 +5,13 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    @projects = current_user.projects
   end
 
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @task = Task.new
   end
 
   # GET /projects/new
@@ -71,6 +72,6 @@ class ProjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_params
-      params.require(:project).permit(:title, :description, :user_id)
+      params.require(:project).permit(:title, :description, user_ids: [])
     end
 end
