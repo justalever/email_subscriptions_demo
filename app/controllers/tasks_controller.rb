@@ -14,7 +14,13 @@ class TasksController < ApplicationController
     @task = @project.tasks.create(task_params)
 
     respond_to do |format|
+
       if @task.save
+        (@project.users.uniq - [current_user]).each do |user|
+          if user.notify_when_task_created?
+            TaskMailer.with(task: @task, user: user, author: current_user).task_created.deliver_later
+          end
+        end
         format.html { redirect_to project_path(@project), notice: 'Task was successfully created.' }
       else
         format.html { redirect_to project_path(@project) }
@@ -31,6 +37,12 @@ class TasksController < ApplicationController
       end
 
       if @task.update(task_params)
+
+        (@project.users.uniq - [current_user]).each do |user|
+          if user.notify_when_task_completed?
+            TaskMailer.with(task: @task, user: user, author: current_user).task_completed.deliver_later
+          end
+        end
         format.json { render :show, status: :ok, location: project_path(@project) }
       else
         format.html { redirect_to project_path(@project) }

@@ -1,0 +1,12 @@
+<p>Hi <%= @user.name %>,</p>
+
+<p><%= @author.name || @author.username %> added a new task for <%= link_to @task.project.title, project_url(@task.project) %></p>
+
+<p>Task:</p>
+<p style="padding: 10px; background-color: #efefef;">
+  <%= @task.body %>
+</p>
+
+<%= link_to "View the project", project_url(@task.project), target: :_blank %>
+
+<%= render "shared/unsubscribe_link", subscription_type: "task_created" %>
