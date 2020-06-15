@@ -1,24 +1,8 @@
-# README
+# Email Subscription Workflow - Ruby on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Stack: Ruby on Rails
+Website: [https://web-crunch.com](https://web-crunch.com)
 
-Things you may want to cover:
+This is the source code of a 6-part guide on creating e-mail notifications with optional settings tailored to a given user's preferences. Each user can enable or disable their e-mail subscriptions and also opt out directly from an e-mail without needing to sign in.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+In the guide I build a primative project management app with a task list.
